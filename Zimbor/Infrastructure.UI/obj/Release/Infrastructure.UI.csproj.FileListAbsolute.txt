@@ -1,0 +1,8 @@
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Release\Infrastructure.UI.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Release\Infrastructure.UI.pdb
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Release\Lib.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Release\System.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Release\System.Web.Mvc.xml
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\obj\Release\Infrastructure.UI.csprojResolveAssemblyReference.cache
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\obj\Release\Infrastructure.UI.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\obj\Release\Infrastructure.UI.pdb

@@ -1,0 +1,10 @@
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\Domain.dll.config
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\Domain.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\Domain.pdb
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\EntityFramework.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\EntityFramework.SqlServer.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\Lib.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\EntityFramework.xml
+D:\Personal\Zimbor\Zimbor\Domain\bin\Release\EntityFramework.SqlServer.xml
+D:\Personal\Zimbor\Zimbor\Domain\obj\Release\Domain.dll
+D:\Personal\Zimbor\Zimbor\Domain\obj\Release\Domain.pdb

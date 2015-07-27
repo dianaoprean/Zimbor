@@ -1,0 +1,9 @@
+D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Release\Infrastructure.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Release\Infrastructure.pdb
+D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Release\Microsoft.Practices.ServiceLocation.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Release\Microsoft.Practices.Unity.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Release\System.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Release\System.Web.Mvc.xml
+D:\Personal\Zimbor\Zimbor\Infrastructure\obj\Release\Infrastructure.csprojResolveAssemblyReference.cache
+D:\Personal\Zimbor\Zimbor\Infrastructure\obj\Release\Infrastructure.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure\obj\Release\Infrastructure.pdb

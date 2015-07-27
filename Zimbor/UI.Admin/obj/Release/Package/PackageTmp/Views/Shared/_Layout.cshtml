@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+@{
+	var cls = "";
+	var action = ViewContext.RouteData.Values["action"];
+		if ((action != null) && (action.ToString() == "Login"))
+				{
+									cls = "login-page";
+								}
+
+}
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewBag.Title - Centru de Informare si Marketing Turistic in Comuna Zimbor, judetul Salaj</title>
+	<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	@Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/ui")
+    @Styles.Render("~/Content/jqGridCss")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+@if ((action != null) && (action.ToString() != "Login"))
+{
+	<body class="skin-green">
+		<!-- Site wrapper -->
+		<div class="wrapper">
+
+			<header class="main-header">
+				<a href="@Url.Action("Index", "Home")" class="logo"><b>Comuna</b> Zimbor</a>
+				<!-- Header Navbar: style can be found in header.less -->
+				<nav class="navbar navbar-static-top" role="navigation">
+					<!-- Sidebar toggle button-->
+					<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- User Account: style can be found in dropdown.less -->
+							@if (Request.IsAuthenticated)
+														{
+                        <!-- User Account: style can be found in dropdown.less -->
+															@Html.Partial("_LoginPartial")
+																												}
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<!-- =============================================== -->
+			<!-- Left side column. contains the sidebar -->
+			<aside class="main-sidebar">
+				<!-- sidebar: style can be found in sidebar.less -->
+				<section class="sidebar">
+					<!-- Sidebar user panel -->
+					<div class="user-panel">
+						<div class="pull-left info">
+							<p>@User.Identity.Name</p>
+							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+						</div>
+					</div>
+					<!-- sidebar menu: : style can be found in sidebar.less -->
+					<ul class="sidebar-menu">
+						<li class="header">MAIN NAVIGATION</li>
+						<li><a href="@Url.Action("Index", "UserManagement")"><i class="fa fa-list"></i>Management Useri</a></li>
+						<li><a href="@Url.Action("Index", "PrimireTuristica")"><i class="fa fa-home"></i>Structura Primire Turistica</a></li>
+                        <li><a href="@Url.Action("Index", "Clienti")"><i class="fa fa-user"></i>Clienti</a></li>
+                        <li><a href="@Url.Action("Index", "Produse")"><i class="fa fa-shopping-cart"></i> Produse</a></li>
+						<li><a href="@Url.Action("Index", "Concurenta")"><i class="fa fa-eye"></i> Concurenta</a></li>
+						<li><a href="@Url.Action("Index", "CampaniiMarketing")"><i class="fa fa-phone"></i> Campanii Marketing</a></li>
+                        <li><a href="@Url.Action("Index", "StudiuPiata")"><i class="fa fa-bar-chart"></i> Studii de Piata</a></li>
+                        <li><a href="@Url.Action("Index", "Cms")"><i class="fa fa-globe"></i>Editare Continut Site Public</a></li>
+					</ul>
+				</section>
+				<!-- /.sidebar -->
+			</aside>
+			<!-- =============================================== -->
+			<!-- Content Wrapper. Contains page content -->
+			@RenderSection("featured", required: false)
+			<div class="content-wrapper">
+				@RenderBody()
+			</div><!-- /.content-wrapper -->
+			<footer class="main-footer">
+				<div class="pull-right hidden-xs">
+					Centru de Informare si Marketing Turistic in Comuna Zimbor, judetul Salaj
+				</div>
+				<strong>Copyright &copy; 2014-2015 <a href="#">ZZ</a>.</strong> All rights reserved.
+			</footer>
+		</div><!-- ./wrapper -->
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/bootstrap-dialog")
+        @Scripts.Render("~/bundles/jqgrid")
+		@Scripts.Render("~/bundles/common")
+		@RenderSection("scripts", required: false)
+        <input type="hidden" id="relativeRoot" value="@Url.Content("~")"/>
+        <!--  MODAL TEMPLATE-->
+        <div class="modal fade" id="partial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modal Default</h4>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Anulare</button>
+                            <button type="button" class="btn btn-primary" id="btn-save">Salvare</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</body>
+}
+else
+{
+	<body class="@cls">
+		@RenderBody()
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+		@Scripts.Render("~/bundles/common")
+		@RenderSection("scripts", required: false)
+	</body>
+}
+</html>

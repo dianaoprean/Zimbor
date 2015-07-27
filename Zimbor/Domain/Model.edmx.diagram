@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc10994d7dc146a39bd5b4a0f02a6d79" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model.ImagineProdus" Width="1.5" PointX="9.5118706326521334" PointY="0.85524794499168544" />
+        <EntityTypeShape EntityType="Model.Produs" Width="1.5" PointX="11.019187995707238" PointY="14.868438071975689" />
+        <EntityTypeShape EntityType="Model.TipProdus" Width="1.5" PointX="11.708997381715568" PointY="15.593544237126384" />
+        <EntityTypeShape EntityType="Model.webpages_Membership" Width="1.5" PointX="4.4574088754399721" PointY="24.871655594963421" />
+        <EntityTypeShape EntityType="Model.webpages_OAuthMembership" Width="1.5" PointX="2.5004414052238877" PointY="28.955017311943237" />
+        <EntityTypeShape EntityType="Model.webpages_Roles" Width="1.5" PointX="8.7028018518829739" PointY="31.607227518971651" />
+        <AssociationConnector Association="Model.FK_ImagineProdus_Produs" />
+        <AssociationConnector Association="Model.webpages_UsersInRoles" />
+        <EntityTypeShape EntityType="Model.CampanieMarketing" Width="1.5" PointX="8.5853488801910309" PointY="10.683151399103529" />
+        <EntityTypeShape EntityType="Model.Client" Width="1.5" PointX="8.5000219552312153" PointY="15.78674013157689" />
+        <EntityTypeShape EntityType="Model.Concurenta" Width="1.5" PointX="11.174310575786192" PointY="20.297641957317314" />
+        <EntityTypeShape EntityType="Model.Judet" Width="1.5" PointX="6.89039348386712" PointY="23.826462905773177" />
+        <EntityTypeShape EntityType="Model.PrimireTuristica" Width="1.5" PointX="3.2168236203570029" PointY="13.062509304407289" />
+        <EntityTypeShape EntityType="Model.StudiuPiata" Width="1.5" PointX="3.943859122667396" PointY="20.159811759442004" />
+        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="3.9999646544456318" PointY="7.5535644924051892" />
+        <EntityTypeShape EntityType="Model.Zona" Width="1.5" PointX="3.119695478640355" PointY="18.289326721005761" />
+        <AssociationConnector Association="Model.FK_Client_Judet" />
+        <AssociationConnector Association="Model.FK_PrimireTuristica_Zona" />
+        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="10.389218905190573" PointY="10.840183412116106" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,92 @@
+﻿@model UI.Admin.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+		{
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary(true)
+<div class="login-page">
+	<div class="login-box">
+		<div class="login-logo">
+			<a href="#"><b>Log</b>IN</a>
+		</div><!-- /.login-logo -->
+		<div class="login-box-body">
+			<p class="login-box-msg">Sign in to start your session</p>
+			<form action="../../index2.html" method="post">
+				<div class="form-group has-feedback">
+					@Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Username" })
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+					@Html.ValidationMessageFor(model => model.UserName)
+				</div>
+				<div class="form-group has-feedback">
+					@Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+					@Html.ValidationMessageFor(model => model.Password)
+				</div>
+				<div class="form-group left-20">
+					<div class="col-xs-8">
+						<div class="checkbox icheck">
+							<label>
+								@Html.EditorFor(model => model.RememberMe) Remember Me
+							</label>
+						</div>
+					</div><!-- /.col -->
+					<div class="col-xs-4">
+						<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+					</div><!-- /.col -->
+					<br class="clear" />
+				</div>
+			</form>
+			<a href="#">I forgot my password</a><br>
+			<a href="Register" class="text-center">Register a new membership</a>
+		</div><!-- /.login-box-body -->
+	</div><!-- /.login-box -->
+</div>
+}
+
+	@*<h2>Use a local account to log in.</h2>
+	@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+			<div class="form-box" id="login-box">
+				<div class="header">Sign In</div>
+				<form role="form">
+					<div class="body bg-gray">
+						<div class="form-group">
+							@Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Username" })
+							@Html.ValidationMessageFor(model => model.UserName)
+						</div>
+
+						<div class="form-group">
+							@Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+							@Html.ValidationMessageFor(model => model.Password)
+						</div>
+
+						<div class="form-group">
+							@Html.EditorFor(model => model.RememberMe)
+							Remember Me
+						</div>
+
+						@Html.ValidationSummary(true)
+
+					</div>
+					<div class="footer">
+						<div class="form-group">
+							<input type="submit" value="Login" class="btn btn-lg btn-primary btn-block" />
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+				}*@
+
+
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}

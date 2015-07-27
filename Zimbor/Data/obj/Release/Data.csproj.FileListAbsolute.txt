@@ -1,0 +1,14 @@
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Data.dll
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Data.pdb
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Domain.dll
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Infrastructure.dll
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Microsoft.Practices.ServiceLocation.dll
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Microsoft.Practices.Unity.dll
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\System.Linq.Dynamic.dll
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\System.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Domain.pdb
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\Infrastructure.pdb
+D:\Personal\Zimbor\Zimbor\Data\bin\Release\System.Web.Mvc.xml
+D:\Personal\Zimbor\Zimbor\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
+D:\Personal\Zimbor\Zimbor\Data\obj\Release\Data.dll
+D:\Personal\Zimbor\Zimbor\Data\obj\Release\Data.pdb

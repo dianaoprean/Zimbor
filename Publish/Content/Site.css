@@ -1,0 +1,29 @@
+﻿.clear {
+    clear: both;
+}
+
+.left-20 {
+    margin-left: 20px;
+}
+
+.example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+}
+
+.example-modal .modal {
+    background: transparent!important;
+}
+
+.field-validation-error {
+    color:red;
+}
+
+.jqgrid-alt {
+    background-color:#F9F9F9 !important;
+}

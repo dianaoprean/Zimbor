@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModelContainer1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ImagineProdus" EntityType="Model.ImagineProdu" />
+    <EntitySet Name="Produs" EntityType="Model.Produ" />
+    <EntitySet Name="TipProdus" EntityType="Model.TipProdu" />
+    <AssociationSet Name="FK_ImagineProdus_Produs" Association="Model.FK_ImagineProdus_Produs">
+      <End Role="Produ" EntitySet="Produs" />
+      <End Role="ImagineProdu" EntitySet="ImagineProdus" />
+    </AssociationSet>
+    <EntitySet Name="CampanieMarketing" EntityType="Model.CampanieMarketing" />
+    <EntitySet Name="Client" EntityType="Model.Client" />
+    <EntitySet Name="Concurenta" EntityType="Model.Concurenta" />
+    <EntitySet Name="Judet" EntityType="Model.Judet" />
+    <EntitySet Name="PrimireTuristica" EntityType="Model.PrimireTuristica" />
+    <EntitySet Name="StudiuPiata" EntityType="Model.StudiuPiata" />
+    <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
+    <EntitySet Name="UserProfile" EntityType="Model.UserProfile" />
+    <EntitySet Name="webpages_Membership" EntityType="Model.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Model.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="Model.webpages_Roles" />
+    <EntitySet Name="Zona" EntityType="Model.Zona" />
+    <AssociationSet Name="FK_Client_Judet" Association="Model.FK_Client_Judet">
+      <End Role="Judet" EntitySet="Judet" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrimireTuristica_Zona" Association="Model.FK_PrimireTuristica_Zona">
+      <End Role="Zona" EntitySet="Zona" />
+      <End Role="PrimireTuristica" EntitySet="PrimireTuristica" />
+    </AssociationSet>
+    <AssociationSet Name="webpages_UsersInRoles" Association="Model.webpages_UsersInRoles">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="UserProfile" EntitySet="UserProfile" />
+    </AssociationSet>
+    <EntitySet Name="Image" EntityType="Model.Image" />
+    <AssociationSet Name="FK_ImagineProdus_Image" Association="Model.FK_ImagineProdus_Image">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="ImagineProdu" EntitySet="ImagineProdus" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ImagineProdu">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Type="Int32" Name="ImageID" Nullable="false" />
+    <Property Type="Int32" Name="ProdusID" />
+    <NavigationProperty Name="Produ" Relationship="Model.FK_ImagineProdus_Produs" FromRole="ImagineProdu" ToRole="Produ" />
+    <NavigationProperty Name="Image" Relationship="Model.FK_ImagineProdus_Image" FromRole="ImagineProdu" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Produ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Descriere" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="DataAdaugarii" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ImagineProdus" Relationship="Model.FK_ImagineProdus_Produs" FromRole="Produ" ToRole="ImagineProdu" />
+  </EntityType>
+  <EntityType Name="TipProdu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_ImagineProdus_Produs">
+    <End Type="Model.Produ" Role="Produ" Multiplicity="0..1" />
+    <End Type="Model.ImagineProdu" Role="ImagineProdu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produ">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImagineProdu">
+        <PropertyRef Name="ProdusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CampanieMarketing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Descriere" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="DataAdaugarii" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Prenume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Strada" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Istoric" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Localitate" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CodPostal" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="JudetID" Nullable="false" />
+    <NavigationProperty Name="Judet" Relationship="Model.FK_Client_Judet" FromRole="Client" ToRole="Judet" />
+  </EntityType>
+  <EntityType Name="Concurenta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Descriere" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="DataAdaugarii" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Judet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Cod" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client" Relationship="Model.FK_Client_Judet" FromRole="Judet" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="PrimireTuristica">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Strada" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ZonaID" Nullable="false" />
+    <Property Type="String" Name="Localitate" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CodPostal" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Telefon" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NumeProprietar" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Zona" Relationship="Model.FK_PrimireTuristica_Zona" FromRole="PrimireTuristica" ToRole="Zona" />
+  </EntityType>
+  <EntityType Name="StudiuPiata">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="NrTuristi" Nullable="false" />
+    <Property Type="DateTime" Name="DataStudiului" Nullable="false" Precision="3" />
+    <Property Type="String" Name="Detalii" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="webpages_Roles" Relationship="Model.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Precision="3" />
+    <Property Type="String" Name="ConfirmationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsConfirmed" />
+    <Property Type="DateTime" Name="LastPasswordFailureDate" Precision="3" />
+    <Property Type="Int32" Name="PasswordFailuresSinceLastSuccess" Nullable="false" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="PasswordChangedDate" Precision="3" />
+    <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PasswordVerificationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="PasswordVerificationTokenExpirationDate" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Type="String" Name="Provider" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProviderUserId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserProfile" Relationship="Model.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+  </EntityType>
+  <EntityType Name="Zona">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Descriere" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PrimireTuristica" Relationship="Model.FK_PrimireTuristica_Zona" FromRole="Zona" ToRole="PrimireTuristica" />
+  </EntityType>
+  <Association Name="FK_Client_Judet">
+    <End Type="Model.Judet" Role="Judet" Multiplicity="1" />
+    <End Type="Model.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Judet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="JudetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrimireTuristica_Zona">
+    <End Type="Model.Zona" Role="Zona" Multiplicity="1" />
+    <End Type="Model.PrimireTuristica" Role="PrimireTuristica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zona">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrimireTuristica">
+        <PropertyRef Name="ZonaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="webpages_UsersInRoles">
+    <End Type="Model.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
+    <End Type="Model.UserProfile" Role="UserProfile" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Path" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Url" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ImagineProdus" Relationship="Model.FK_ImagineProdus_Image" FromRole="Image" ToRole="ImagineProdu" />
+  </EntityType>
+  <Association Name="FK_ImagineProdus_Image">
+    <End Type="Model.Image" Role="Image" Multiplicity="1" />
+    <End Type="Model.ImagineProdu" Role="ImagineProdu" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImagineProdu">
+        <PropertyRef Name="ImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

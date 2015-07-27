@@ -1,0 +1,17 @@
+﻿@model UI.Admin.Models.ConcurentaModel
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery.unobtrusive-ajax")
+
+<form role="form" id="edit-form">
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nume)
+        @Html.TextBoxFor(m => m.Nume, new { @class = "form-control", @placeholder = "Nume" })
+        @Html.ValidationMessageFor(m => m.Nume)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Descriere)
+        @Html.TextAreaFor(m => m.Descriere, new { @class = "form-control", @placeholder = "Descriere", @rows="4" })
+        @Html.ValidationMessageFor(m => m.Descriere)
+    </div>
+</form>

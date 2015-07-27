@@ -1,0 +1,11 @@
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\Domain.dll.config
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\Domain.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\Domain.pdb
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\EntityFramework.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\Lib.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\EntityFramework.xml
+D:\Personal\Zimbor\Zimbor\Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\Personal\Zimbor\Zimbor\Domain\obj\Debug\Domain.dll
+D:\Personal\Zimbor\Zimbor\Domain\obj\Debug\Domain.pdb
+D:\Personal\Zimbor\Zimbor\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

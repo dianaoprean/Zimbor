@@ -1,0 +1,7 @@
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Debug\Infrastructure.UI.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Debug\Infrastructure.UI.pdb
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Debug\Lib.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Debug\System.Web.Mvc.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\bin\Debug\System.Web.Mvc.xml
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\obj\Debug\Infrastructure.UI.dll
+D:\Personal\Zimbor\Zimbor\Infrastructure.UI\obj\Debug\Infrastructure.UI.pdb

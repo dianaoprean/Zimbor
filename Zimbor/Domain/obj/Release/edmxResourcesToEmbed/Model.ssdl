@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CampanieMarketing" EntityType="Model.Store.CampanieMarketing" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Client" EntityType="Model.Store.Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Concurenta" EntityType="Model.Store.Concurenta" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Image" EntityType="Model.Store.Image" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ImagineProdus" EntityType="Model.Store.ImagineProdus" store:Type="Tables" store:Schema="dbo" store:Name="ImagineProdus">
+      <DefiningQuery>SELECT 
+      [ImagineProdus].[ImageID] AS [ImageID], 
+      [ImagineProdus].[ProdusID] AS [ProdusID]
+      FROM [dbo].[ImagineProdus] AS [ImagineProdus]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Judet" EntityType="Model.Store.Judet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrimireTuristica" EntityType="Model.Store.PrimireTuristica" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Produs" EntityType="Model.Store.Produs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudiuPiata" EntityType="Model.Store.StudiuPiata" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="Model.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipProdus" EntityType="Model.Store.TipProdus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProfile" EntityType="Model.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Membership" EntityType="Model.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Model.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Roles" EntityType="Model.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="Model.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zona" EntityType="Model.Store.Zona" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Client_Judet" Association="Model.Store.FK_Client_Judet">
+      <End Role="Judet" EntitySet="Judet" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImagineProdus_Image" Association="Model.Store.FK_ImagineProdus_Image">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="ImagineProdus" EntitySet="ImagineProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImagineProdus_Produs" Association="Model.Store.FK_ImagineProdus_Produs">
+      <End Role="Produs" EntitySet="Produs" />
+      <End Role="ImagineProdus" EntitySet="ImagineProdus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrimireTuristica_Zona" Association="Model.Store.FK_PrimireTuristica_Zona">
+      <End Role="Zona" EntitySet="Zona" />
+      <End Role="PrimireTuristica" EntitySet="PrimireTuristica" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="Model.Store.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserId" Association="Model.Store.fk_UserId">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CampanieMarketing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Descriere" Type="varchar" MaxLength="500" />
+    <Property Name="DataAdaugarii" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Prenume" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Strada" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="Istoric" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Localitate" Type="varchar" MaxLength="100" />
+    <Property Name="CodPostal" Type="nchar" MaxLength="10" />
+    <Property Name="JudetID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Concurenta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Descriere" Type="varchar" MaxLength="500" />
+    <Property Name="DataAdaugarii" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Path" Type="varchar(max)" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Type" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Url" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Zimbor.dbo.ImagineProdus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="ImagineProdus">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="ProdusID" Type="int" />
+  </EntityType>
+  <EntityType Name="Judet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Cod" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PrimireTuristica">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Strada" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="ZonaID" Type="int" Nullable="false" />
+    <Property Name="Localitate" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CodPostal" Type="varchar" MaxLength="10" />
+    <Property Name="Telefon" Type="varchar" MaxLength="50" />
+    <Property Name="NumeProprietar" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Produs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Descriere" Type="varchar" MaxLength="500" />
+    <Property Name="DataAdaugarii" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudiuPiata">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="NrTuristi" Type="int" Nullable="false" />
+    <Property Name="DataStudiului" Type="datetime" Nullable="false" />
+    <Property Name="Detalii" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipProdus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zona">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Descriere" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_Client_Judet">
+    <End Role="Judet" Type="Model.Store.Judet" Multiplicity="1" />
+    <End Role="Client" Type="Model.Store.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Judet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="JudetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImagineProdus_Image">
+    <End Role="Image" Type="Model.Store.Image" Multiplicity="1" />
+    <End Role="ImagineProdus" Type="Model.Store.ImagineProdus" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImagineProdus">
+        <PropertyRef Name="ImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImagineProdus_Produs">
+    <End Role="Produs" Type="Model.Store.Produs" Multiplicity="0..1" />
+    <End Role="ImagineProdus" Type="Model.Store.ImagineProdus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImagineProdus">
+        <PropertyRef Name="ProdusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrimireTuristica_Zona">
+    <End Role="Zona" Type="Model.Store.Zona" Multiplicity="1" />
+    <End Role="PrimireTuristica" Type="Model.Store.PrimireTuristica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zona">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrimireTuristica">
+        <PropertyRef Name="ZonaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="Model.Store.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Model.Store.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserId">
+    <End Role="UserProfile" Type="Model.Store.UserProfile" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Model.Store.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'Zimbor.dbo.ImaginePrimireTuristica' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="ImaginePrimireTuristica">
+        <Property Name="ImageID" Type="int" />
+        <Property Name="PrimireTuristicaID" Type="int" />
+      </EntityType>-->
+</Schema>

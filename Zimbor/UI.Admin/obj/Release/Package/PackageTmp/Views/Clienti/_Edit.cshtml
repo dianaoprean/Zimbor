@@ -1,0 +1,42 @@
+﻿@model UI.Admin.Models.ClientModel
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery.unobtrusive-ajax")
+
+<form role="form" id="edit-form">
+    @Html.HiddenFor(m => m.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nume)
+        @Html.TextBoxFor(m => m.Nume, new { @class = "form-control", @placeholder = "Nume" })
+        @Html.ValidationMessageFor(m => m.Nume)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Prenume)
+        @Html.TextBoxFor(m => m.Prenume, new { @class = "form-control", @placeholder = "Prenume" })
+        @Html.ValidationMessageFor(m => m.Prenume)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Adresa)
+        @Html.TextBoxFor(m => m.Adresa, new { @class = "form-control", @placeholder = "Strada, Nr." })
+        @Html.ValidationMessageFor(m => m.Adresa)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Localitate)
+        @Html.TextBoxFor(m => m.Localitate, new { @class = "form-control", @placeholder = "Strada, Nr." })
+        @Html.ValidationMessageFor(m => m.Localitate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CodPostal)
+        @Html.TextBoxFor(m => m.CodPostal, new { @class = "form-control", @placeholder = "CodPostal" })
+        @Html.ValidationMessageFor(m => m.CodPostal)
+    </div>
+       <div class="form-group">
+        @Html.LabelFor(m => m.JudetId)
+        @Html.DropDownListFor(m => m.JudetId, (SelectList)ViewBag.Judete, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.JudetId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Istoric)
+        @Html.TextBoxFor(m => m.Istoric, new { @class = "form-control", @placeholder = "Istoric" })
+        @Html.ValidationMessageFor(m => m.Istoric)
+    </div>
+</form>
