@@ -219,6 +219,7 @@ namespace UI.Admin.Extensions
             entity.ZonaID = model.ZonaId;
             entity.CodPostal = model.CodPostal;
             entity.Telefon = model.Telefon;
+            entity.Localitate = model.Localitate;
             entity.NumeProprietar = model.NumeProprietar;
         }
 

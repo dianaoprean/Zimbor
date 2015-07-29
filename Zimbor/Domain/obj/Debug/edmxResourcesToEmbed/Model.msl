@@ -3,33 +3,7 @@
   <Alias Key="Model" Value="Model" />
   <Alias Key="Target" Value="Model.Store" />
   <EntityContainerMapping CdmEntityContainer="ZimborEntities" StorageEntityContainer="ModelStoreContainer">
-    <EntitySetMapping Name="ImagineProdus">
-      <EntityTypeMapping TypeName="Model.ImagineProdu">
-        <MappingFragment StoreEntitySet="ImagineProdus">
-          <ScalarProperty Name="ProdusID" ColumnName="ProdusID" />
-          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Produs">
-      <EntityTypeMapping TypeName="Model.Produ">
-        <MappingFragment StoreEntitySet="Produs">
-          <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
-          <ScalarProperty Name="Descriere" ColumnName="Descriere" />
-          <ScalarProperty Name="Nume" ColumnName="Nume" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TipProdus">
-      <EntityTypeMapping TypeName="Model.TipProdu">
-        <MappingFragment StoreEntitySet="TipProdus">
-          <ScalarProperty Name="Nume" ColumnName="Nume" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CampanieMarketing">
+    <EntitySetMapping Name="CampanieMarketings">
       <EntityTypeMapping TypeName="Model.CampanieMarketing">
         <MappingFragment StoreEntitySet="CampanieMarketing">
           <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
@@ -39,7 +13,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Client">
+    <EntitySetMapping Name="Clients">
       <EntityTypeMapping TypeName="Model.Client">
         <MappingFragment StoreEntitySet="Client">
           <ScalarProperty Name="JudetID" ColumnName="JudetID" />
@@ -53,7 +27,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Concurenta">
+    <EntitySetMapping Name="Concurentas">
       <EntityTypeMapping TypeName="Model.Concurenta">
         <MappingFragment StoreEntitySet="Concurenta">
           <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
@@ -63,7 +37,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Judet">
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="Model.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="ImageContent" ColumnName="ImageContent" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImaginePrimireTuristicas">
+      <EntityTypeMapping TypeName="Model.ImaginePrimireTuristica">
+        <MappingFragment StoreEntitySet="ImaginePrimireTuristica">
+          <ScalarProperty Name="PrimireTuristicaID" ColumnName="PrimireTuristicaID" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImagineProdus">
+      <EntityTypeMapping TypeName="Model.ImagineProdu">
+        <MappingFragment StoreEntitySet="ImagineProdus">
+          <ScalarProperty Name="ProdusID" ColumnName="ProdusID" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Judets">
       <EntityTypeMapping TypeName="Model.Judet">
         <MappingFragment StoreEntitySet="Judet">
           <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -72,7 +74,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PrimireTuristica">
+    <EntitySetMapping Name="PrimireTuristicas">
       <EntityTypeMapping TypeName="Model.PrimireTuristica">
         <MappingFragment StoreEntitySet="PrimireTuristica">
           <ScalarProperty Name="NumeProprietar" ColumnName="NumeProprietar" />
@@ -86,7 +88,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="StudiuPiata">
+    <EntitySetMapping Name="Produs">
+      <EntityTypeMapping TypeName="Model.Produ">
+        <MappingFragment StoreEntitySet="Produs">
+          <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
+          <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudiuPiatas">
       <EntityTypeMapping TypeName="Model.StudiuPiata">
         <MappingFragment StoreEntitySet="StudiuPiata">
           <ScalarProperty Name="Detalii" ColumnName="Detalii" />
@@ -97,7 +109,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UserProfile">
+    <EntitySetMapping Name="TipProdus">
+      <EntityTypeMapping TypeName="Model.TipProdu">
+        <MappingFragment StoreEntitySet="TipProdus">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
       <EntityTypeMapping TypeName="Model.UserProfile">
         <MappingFragment StoreEntitySet="UserProfile">
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -139,7 +159,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Zona">
+    <EntitySetMapping Name="Zonas">
       <EntityTypeMapping TypeName="Model.Zona">
         <MappingFragment StoreEntitySet="Zona">
           <ScalarProperty Name="Descriere" ColumnName="Descriere" />
@@ -156,17 +176,5 @@
         <ScalarProperty Name="RoleId" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="Image">
-      <EntityTypeMapping TypeName="Model.Image">
-        <MappingFragment StoreEntitySet="Image">
-          <ScalarProperty Name="ImageContent1" ColumnName="ImageContent" />
-          <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Path" ColumnName="Path" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

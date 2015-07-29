@@ -12,3 +12,17 @@ D:\Personal\Zimbor\Zimbor\Data\bin\Debug\System.Web.Mvc.xml
 D:\Personal\Zimbor\Zimbor\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\Personal\Zimbor\Zimbor\Data\obj\Debug\Data.dll
 D:\Personal\Zimbor\Zimbor\Data\obj\Debug\Data.pdb
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Data.dll
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Data.pdb
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Domain.dll
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Infrastructure.dll
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Microsoft.Practices.Unity.dll
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\System.Linq.Dynamic.dll
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\System.Web.Mvc.dll
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Domain.pdb
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\Infrastructure.pdb
+D:\Personal\ZimborGit\Zimbor\Data\bin\Debug\System.Web.Mvc.xml
+D:\Personal\ZimborGit\Zimbor\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\Personal\ZimborGit\Zimbor\Data\obj\Debug\Data.dll
+D:\Personal\ZimborGit\Zimbor\Data\obj\Debug\Data.pdb

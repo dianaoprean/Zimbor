@@ -10,6 +10,12 @@
           <EntitySet Name="Client" EntityType="Model.Store.Client" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Concurenta" EntityType="Model.Store.Concurenta" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Image" EntityType="Model.Store.Image" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImaginePrimireTuristica" EntityType="Model.Store.ImaginePrimireTuristica" store:Type="Tables" store:Schema="dbo" store:Name="ImaginePrimireTuristica">
+            <DefiningQuery>SELECT 
+      [ImaginePrimireTuristica].[ImageID] AS [ImageID], 
+      [ImaginePrimireTuristica].[PrimireTuristicaID] AS [PrimireTuristicaID]
+      FROM [dbo].[ImaginePrimireTuristica] AS [ImaginePrimireTuristica]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ImagineProdus" EntityType="Model.Store.ImagineProdus" store:Type="Tables" store:Schema="dbo" store:Name="ImagineProdus">
             <DefiningQuery>SELECT 
       [ImagineProdus].[ImageID] AS [ImageID], 
@@ -30,6 +36,14 @@
           <AssociationSet Name="FK_Client_Judet" Association="Model.Store.FK_Client_Judet">
             <End Role="Judet" EntitySet="Judet" />
             <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImaginePrimireTuristica_Image" Association="Model.Store.FK_ImaginePrimireTuristica_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="ImaginePrimireTuristica" EntitySet="ImaginePrimireTuristica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImaginePrimireTuristica_PrimireTuristica" Association="Model.Store.FK_ImaginePrimireTuristica_PrimireTuristica">
+            <End Role="PrimireTuristica" EntitySet="PrimireTuristica" />
+            <End Role="ImaginePrimireTuristica" EntitySet="ImaginePrimireTuristica" />
           </AssociationSet>
           <AssociationSet Name="FK_ImagineProdus_Image" Association="Model.Store.FK_ImagineProdus_Image">
             <End Role="Image" EntitySet="Image" />
@@ -93,6 +107,16 @@
           <Property Name="Type" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="Url" Type="varchar(max)" />
           <Property Name="ImageContent" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Zimbor.dbo.ImaginePrimireTuristica' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ImaginePrimireTuristica">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" Nullable="false" />
+          <Property Name="PrimireTuristicaID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'Zimbor.dbo.ImagineProdus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -218,6 +242,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ImaginePrimireTuristica_Image">
+          <End Role="Image" Type="Model.Store.Image" Multiplicity="1" />
+          <End Role="ImaginePrimireTuristica" Type="Model.Store.ImaginePrimireTuristica" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImaginePrimireTuristica">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImaginePrimireTuristica_PrimireTuristica">
+          <End Role="PrimireTuristica" Type="Model.Store.PrimireTuristica" Multiplicity="0..1" />
+          <End Role="ImaginePrimireTuristica" Type="Model.Store.ImaginePrimireTuristica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimireTuristica">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImaginePrimireTuristica">
+              <PropertyRef Name="PrimireTuristicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ImagineProdus_Image">
           <End Role="Image" Type="Model.Store.Image" Multiplicity="1" />
           <End Role="ImagineProdus" Type="Model.Store.ImagineProdus" Multiplicity="0..1" />
@@ -278,92 +326,56 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-      warning 6013: The table/view 'Zimbor.dbo.ImaginePrimireTuristica' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-      
-      <EntityType Name="ImaginePrimireTuristica">
-        <Property Name="ImageID" Type="int" />
-        <Property Name="PrimireTuristicaID" Type="int" />
-      </EntityType>-->
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="ZimborEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CampanieMarketings" EntityType="Model.CampanieMarketing" />
+          <EntitySet Name="Clients" EntityType="Model.Client" />
+          <EntitySet Name="Concurentas" EntityType="Model.Concurenta" />
+          <EntitySet Name="Images" EntityType="Model.Image" />
+          <EntitySet Name="ImaginePrimireTuristicas" EntityType="Model.ImaginePrimireTuristica" />
           <EntitySet Name="ImagineProdus" EntityType="Model.ImagineProdu" />
+          <EntitySet Name="Judets" EntityType="Model.Judet" />
+          <EntitySet Name="PrimireTuristicas" EntityType="Model.PrimireTuristica" />
           <EntitySet Name="Produs" EntityType="Model.Produ" />
+          <EntitySet Name="StudiuPiatas" EntityType="Model.StudiuPiata" />
           <EntitySet Name="TipProdus" EntityType="Model.TipProdu" />
+          <EntitySet Name="UserProfiles" EntityType="Model.UserProfile" />
+          <EntitySet Name="webpages_Membership" EntityType="Model.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="Model.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="Model.webpages_Roles" />
+          <EntitySet Name="Zonas" EntityType="Model.Zona" />
+          <AssociationSet Name="FK_Client_Judet" Association="Model.FK_Client_Judet">
+            <End Role="Judet" EntitySet="Judets" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImaginePrimireTuristica_Image" Association="Model.FK_ImaginePrimireTuristica_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="ImaginePrimireTuristica" EntitySet="ImaginePrimireTuristicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImagineProdus_Image" Association="Model.FK_ImagineProdus_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="ImagineProdu" EntitySet="ImagineProdus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImaginePrimireTuristica_PrimireTuristica" Association="Model.FK_ImaginePrimireTuristica_PrimireTuristica">
+            <End Role="PrimireTuristica" EntitySet="PrimireTuristicas" />
+            <End Role="ImaginePrimireTuristica" EntitySet="ImaginePrimireTuristicas" />
+          </AssociationSet>
           <AssociationSet Name="FK_ImagineProdus_Produs" Association="Model.FK_ImagineProdus_Produs">
             <End Role="Produ" EntitySet="Produs" />
             <End Role="ImagineProdu" EntitySet="ImagineProdus" />
           </AssociationSet>
-          <EntitySet Name="CampanieMarketing" EntityType="Model.CampanieMarketing" />
-          <EntitySet Name="Client" EntityType="Model.Client" />
-          <EntitySet Name="Concurenta" EntityType="Model.Concurenta" />
-          <EntitySet Name="Judet" EntityType="Model.Judet" />
-          <EntitySet Name="PrimireTuristica" EntityType="Model.PrimireTuristica" />
-          <EntitySet Name="StudiuPiata" EntityType="Model.StudiuPiata" />
-          <EntitySet Name="UserProfile" EntityType="Model.UserProfile" />
-          <EntitySet Name="webpages_Membership" EntityType="Model.webpages_Membership" />
-          <EntitySet Name="webpages_OAuthMembership" EntityType="Model.webpages_OAuthMembership" />
-          <EntitySet Name="webpages_Roles" EntityType="Model.webpages_Roles" />
-          <EntitySet Name="Zona" EntityType="Model.Zona" />
-          <AssociationSet Name="FK_Client_Judet" Association="Model.FK_Client_Judet">
-            <End Role="Judet" EntitySet="Judet" />
-            <End Role="Client" EntitySet="Client" />
-          </AssociationSet>
           <AssociationSet Name="FK_PrimireTuristica_Zona" Association="Model.FK_PrimireTuristica_Zona">
-            <End Role="Zona" EntitySet="Zona" />
-            <End Role="PrimireTuristica" EntitySet="PrimireTuristica" />
+            <End Role="Zona" EntitySet="Zonas" />
+            <End Role="PrimireTuristica" EntitySet="PrimireTuristicas" />
           </AssociationSet>
           <AssociationSet Name="webpages_UsersInRoles" Association="Model.webpages_UsersInRoles">
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
-            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
           </AssociationSet>
-          <EntitySet Name="Image" EntityType="Model.Image" />
-          <AssociationSet Name="FK_ImagineProdus_Image" Association="Model.FK_ImagineProdus_Image">
-            <End Role="Image" EntitySet="Image" />
-            <End Role="ImagineProdu" EntitySet="ImagineProdus" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="ImagineProdu">
-          <Key>
-            <PropertyRef Name="ImageID" />
-          </Key>
-          <Property Type="Int32" Name="ImageID" Nullable="false" />
-          <Property Type="Int32" Name="ProdusID" />
-          <NavigationProperty Name="Produ" Relationship="Model.FK_ImagineProdus_Produs" FromRole="ImagineProdu" ToRole="Produ" />
-          <NavigationProperty Name="Image" Relationship="Model.FK_ImagineProdus_Image" FromRole="ImagineProdu" ToRole="Image" />
-        </EntityType>
-        <EntityType Name="Produ">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nume" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Descriere" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DataAdaugarii" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ImagineProdus" Relationship="Model.FK_ImagineProdus_Produs" FromRole="Produ" ToRole="ImagineProdu" />
-        </EntityType>
-        <EntityType Name="TipProdu">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK_ImagineProdus_Produs">
-          <End Type="Model.Produ" Role="Produ" Multiplicity="0..1" />
-          <End Type="Model.ImagineProdu" Role="ImagineProdu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produ">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ImagineProdu">
-              <PropertyRef Name="ProdusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        </EntityContainer>
         <EntityType Name="CampanieMarketing">
           <Key>
             <PropertyRef Name="ID" />
@@ -396,6 +408,37 @@
           <Property Type="String" Name="Descriere" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="DataAdaugarii" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Path" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Url" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="ImageContent" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ImaginePrimireTuristica" Relationship="Model.FK_ImaginePrimireTuristica_Image" FromRole="Image" ToRole="ImaginePrimireTuristica" />
+          <NavigationProperty Name="ImagineProdu" Relationship="Model.FK_ImagineProdus_Image" FromRole="Image" ToRole="ImagineProdu" />
+        </EntityType>
+        <EntityType Name="ImaginePrimireTuristica">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Type="Int32" Name="ImageID" Nullable="false" />
+          <Property Type="Int32" Name="PrimireTuristicaID" />
+          <NavigationProperty Name="Image" Relationship="Model.FK_ImaginePrimireTuristica_Image" FromRole="ImaginePrimireTuristica" ToRole="Image" />
+          <NavigationProperty Name="PrimireTuristica" Relationship="Model.FK_ImaginePrimireTuristica_PrimireTuristica" FromRole="ImaginePrimireTuristica" ToRole="PrimireTuristica" />
+        </EntityType>
+        <EntityType Name="ImagineProdu">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Type="Int32" Name="ImageID" Nullable="false" />
+          <Property Type="Int32" Name="ProdusID" />
+          <NavigationProperty Name="Image" Relationship="Model.FK_ImagineProdus_Image" FromRole="ImagineProdu" ToRole="Image" />
+          <NavigationProperty Name="Produ" Relationship="Model.FK_ImagineProdus_Produs" FromRole="ImagineProdu" ToRole="Produ" />
+        </EntityType>
         <EntityType Name="Judet">
           <Key>
             <PropertyRef Name="ID" />
@@ -403,7 +446,7 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Cod" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Client" Relationship="Model.FK_Client_Judet" FromRole="Judet" ToRole="Client" />
+          <NavigationProperty Name="Clients" Relationship="Model.FK_Client_Judet" FromRole="Judet" ToRole="Client" />
         </EntityType>
         <EntityType Name="PrimireTuristica">
           <Key>
@@ -417,7 +460,18 @@
           <Property Type="String" Name="CodPostal" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Telefon" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="NumeProprietar" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ImaginePrimireTuristicas" Relationship="Model.FK_ImaginePrimireTuristica_PrimireTuristica" FromRole="PrimireTuristica" ToRole="ImaginePrimireTuristica" />
           <NavigationProperty Name="Zona" Relationship="Model.FK_PrimireTuristica_Zona" FromRole="PrimireTuristica" ToRole="Zona" />
+        </EntityType>
+        <EntityType Name="Produ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Descriere" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DataAdaugarii" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ImagineProdus" Relationship="Model.FK_ImagineProdus_Produs" FromRole="Produ" ToRole="ImagineProdu" />
         </EntityType>
         <EntityType Name="StudiuPiata">
           <Key>
@@ -428,6 +482,13 @@
           <Property Type="Int32" Name="NrTuristi" Nullable="false" />
           <Property Type="DateTime" Name="DataStudiului" Nullable="false" Precision="3" />
           <Property Type="String" Name="Detalii" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TipProdu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -468,7 +529,7 @@
           </Key>
           <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserProfile" Relationship="Model.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+          <NavigationProperty Name="UserProfiles" Relationship="Model.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
         </EntityType>
         <EntityType Name="Zona">
           <Key>
@@ -477,7 +538,7 @@
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Nume" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Descriere" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PrimireTuristica" Relationship="Model.FK_PrimireTuristica_Zona" FromRole="Zona" ToRole="PrimireTuristica" />
+          <NavigationProperty Name="PrimireTuristicas" Relationship="Model.FK_PrimireTuristica_Zona" FromRole="Zona" ToRole="PrimireTuristica" />
         </EntityType>
         <Association Name="FK_Client_Judet">
           <End Type="Model.Judet" Role="Judet" Multiplicity="1" />
@@ -488,6 +549,54 @@
             </Principal>
             <Dependent Role="Client">
               <PropertyRef Name="JudetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImaginePrimireTuristica_Image">
+          <End Type="Model.Image" Role="Image" Multiplicity="1" />
+          <End Type="Model.ImaginePrimireTuristica" Role="ImaginePrimireTuristica" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImaginePrimireTuristica">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImagineProdus_Image">
+          <End Type="Model.Image" Role="Image" Multiplicity="1" />
+          <End Type="Model.ImagineProdu" Role="ImagineProdu" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImagineProdu">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImaginePrimireTuristica_PrimireTuristica">
+          <End Type="Model.PrimireTuristica" Role="PrimireTuristica" Multiplicity="0..1" />
+          <End Type="Model.ImaginePrimireTuristica" Role="ImaginePrimireTuristica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimireTuristica">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImaginePrimireTuristica">
+              <PropertyRef Name="PrimireTuristicaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImagineProdus_Produs">
+          <End Type="Model.Produ" Role="Produ" Multiplicity="0..1" />
+          <End Type="Model.ImagineProdu" Role="ImagineProdu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produ">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImagineProdu">
+              <PropertyRef Name="ProdusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -507,31 +616,6 @@
           <End Type="Model.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
           <End Type="Model.UserProfile" Role="UserProfile" Multiplicity="*" />
         </Association>
-        <EntityType Name="Image">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Path" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Url" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ImagineProdus" Relationship="Model.FK_ImagineProdus_Image" FromRole="Image" ToRole="ImagineProdu" />
-          <Property Type="Binary" Name="ImageContent" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Type="Binary" Name="ImageContent1" Nullable="false" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK_ImagineProdus_Image">
-          <End Type="Model.Image" Role="Image" Multiplicity="1" />
-          <End Type="Model.ImagineProdu" Role="ImagineProdu" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Image">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ImagineProdu">
-              <PropertyRef Name="ImageID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -540,33 +624,7 @@
         <Alias Key="Model" Value="Model" />
         <Alias Key="Target" Value="Model.Store" />
         <EntityContainerMapping CdmEntityContainer="ZimborEntities" StorageEntityContainer="ModelStoreContainer">
-          <EntitySetMapping Name="ImagineProdus">
-            <EntityTypeMapping TypeName="Model.ImagineProdu">
-              <MappingFragment StoreEntitySet="ImagineProdus">
-                <ScalarProperty Name="ProdusID" ColumnName="ProdusID" />
-                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Produs">
-            <EntityTypeMapping TypeName="Model.Produ">
-              <MappingFragment StoreEntitySet="Produs">
-                <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
-                <ScalarProperty Name="Descriere" ColumnName="Descriere" />
-                <ScalarProperty Name="Nume" ColumnName="Nume" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipProdus">
-            <EntityTypeMapping TypeName="Model.TipProdu">
-              <MappingFragment StoreEntitySet="TipProdus">
-                <ScalarProperty Name="Nume" ColumnName="Nume" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CampanieMarketing">
+          <EntitySetMapping Name="CampanieMarketings">
             <EntityTypeMapping TypeName="Model.CampanieMarketing">
               <MappingFragment StoreEntitySet="CampanieMarketing">
                 <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
@@ -576,7 +634,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Client">
+          <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="Model.Client">
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="JudetID" ColumnName="JudetID" />
@@ -590,7 +648,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Concurenta">
+          <EntitySetMapping Name="Concurentas">
             <EntityTypeMapping TypeName="Model.Concurenta">
               <MappingFragment StoreEntitySet="Concurenta">
                 <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
@@ -600,7 +658,35 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Judet">
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="Model.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ImageContent" ColumnName="ImageContent" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImaginePrimireTuristicas">
+            <EntityTypeMapping TypeName="Model.ImaginePrimireTuristica">
+              <MappingFragment StoreEntitySet="ImaginePrimireTuristica">
+                <ScalarProperty Name="PrimireTuristicaID" ColumnName="PrimireTuristicaID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagineProdus">
+            <EntityTypeMapping TypeName="Model.ImagineProdu">
+              <MappingFragment StoreEntitySet="ImagineProdus">
+                <ScalarProperty Name="ProdusID" ColumnName="ProdusID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Judets">
             <EntityTypeMapping TypeName="Model.Judet">
               <MappingFragment StoreEntitySet="Judet">
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
@@ -609,7 +695,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PrimireTuristica">
+          <EntitySetMapping Name="PrimireTuristicas">
             <EntityTypeMapping TypeName="Model.PrimireTuristica">
               <MappingFragment StoreEntitySet="PrimireTuristica">
                 <ScalarProperty Name="NumeProprietar" ColumnName="NumeProprietar" />
@@ -623,7 +709,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StudiuPiata">
+          <EntitySetMapping Name="Produs">
+            <EntityTypeMapping TypeName="Model.Produ">
+              <MappingFragment StoreEntitySet="Produs">
+                <ScalarProperty Name="DataAdaugarii" ColumnName="DataAdaugarii" />
+                <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudiuPiatas">
             <EntityTypeMapping TypeName="Model.StudiuPiata">
               <MappingFragment StoreEntitySet="StudiuPiata">
                 <ScalarProperty Name="Detalii" ColumnName="Detalii" />
@@ -634,7 +730,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserProfile">
+          <EntitySetMapping Name="TipProdus">
+            <EntityTypeMapping TypeName="Model.TipProdu">
+              <MappingFragment StoreEntitySet="TipProdus">
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="Model.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -676,7 +780,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Zona">
+          <EntitySetMapping Name="Zonas">
             <EntityTypeMapping TypeName="Model.Zona">
               <MappingFragment StoreEntitySet="Zona">
                 <ScalarProperty Name="Descriere" ColumnName="Descriere" />
@@ -693,19 +797,7 @@
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Image">
-            <EntityTypeMapping TypeName="Model.Image">
-              <MappingFragment StoreEntitySet="Image">
-                <ScalarProperty Name="ImageContent1" ColumnName="ImageContent" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -719,9 +811,9 @@
     <edmx:Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

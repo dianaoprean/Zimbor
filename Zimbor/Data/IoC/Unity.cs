@@ -82,6 +82,7 @@ namespace Data.IoC
                 .RegisterType<IZimborRepository<StudiuPiata>, Repository<StudiuPiata>>(lifetime)
                 .RegisterType<IZimborRepository<TipProdu>, Repository<TipProdu>>(lifetime)
                 .RegisterType<IZimborRepository<Zona>, Repository<Zona>>(lifetime)
+                .RegisterType<IZimborRepository<ImaginePrimireTuristica>, Repository<ImaginePrimireTuristica>>(lifetime)
 
                 .RegisterType<ZimborEntities, ZimborEntities>(lifetime)
                 .Configure<InjectedMembers>()

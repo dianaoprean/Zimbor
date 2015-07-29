@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Data.Repositories;
@@ -19,6 +20,10 @@ namespace UI.Admin.Controllers
 
         [Dependency]
         public IZimborRepository<Zona> ZonaRepository { get; set; }
+
+        [Dependency]
+        public IZimborRepository<ImaginePrimireTuristica> ImaginePrimireTuristicaRepository { get; set; }
+
 
         public ActionResult Index()
         {
@@ -57,14 +62,23 @@ namespace UI.Admin.Controllers
 
                 model.ToEntity(ref entity);
 
-                PrimireTuristicaRepository.Insert(entity);
+                try
+                {
+                    PrimireTuristicaRepository.Insert(entity);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
 
                 if (model.ImageIds != null && model.ImageIds.Any())
                 {
                     foreach (var imageId in model.ImageIds)
                     {
-                             
+                        var imgp = new ImaginePrimireTuristica { ImageID = imageId, PrimireTuristicaID = entity.ID };
+                        ImaginePrimireTuristicaRepository.Insert(imgp);
                     }
+                 
                 }
                 return Json(new { success = true });
             }

@@ -6,3 +6,12 @@ D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Debug\System.Web.Mvc.dll
 D:\Personal\Zimbor\Zimbor\Infrastructure\bin\Debug\System.Web.Mvc.xml
 D:\Personal\Zimbor\Zimbor\Infrastructure\obj\Debug\Infrastructure.dll
 D:\Personal\Zimbor\Zimbor\Infrastructure\obj\Debug\Infrastructure.pdb
+D:\Personal\ZimborGit\Zimbor\Infrastructure\bin\Debug\Infrastructure.dll
+D:\Personal\ZimborGit\Zimbor\Infrastructure\bin\Debug\Infrastructure.pdb
+D:\Personal\ZimborGit\Zimbor\Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\Personal\ZimborGit\Zimbor\Infrastructure\bin\Debug\Microsoft.Practices.Unity.dll
+D:\Personal\ZimborGit\Zimbor\Infrastructure\bin\Debug\System.Web.Mvc.dll
+D:\Personal\ZimborGit\Zimbor\Infrastructure\bin\Debug\System.Web.Mvc.xml
+D:\Personal\ZimborGit\Zimbor\Infrastructure\obj\Debug\Infrastructure.csprojResolveAssemblyReference.cache
+D:\Personal\ZimborGit\Zimbor\Infrastructure\obj\Debug\Infrastructure.dll
+D:\Personal\ZimborGit\Zimbor\Infrastructure\obj\Debug\Infrastructure.pdb

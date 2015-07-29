@@ -5,6 +5,12 @@
     <EntitySet Name="Client" EntityType="Model.Store.Client" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Concurenta" EntityType="Model.Store.Concurenta" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Image" EntityType="Model.Store.Image" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ImaginePrimireTuristica" EntityType="Model.Store.ImaginePrimireTuristica" store:Type="Tables" store:Schema="dbo" store:Name="ImaginePrimireTuristica">
+      <DefiningQuery>SELECT 
+      [ImaginePrimireTuristica].[ImageID] AS [ImageID], 
+      [ImaginePrimireTuristica].[PrimireTuristicaID] AS [PrimireTuristicaID]
+      FROM [dbo].[ImaginePrimireTuristica] AS [ImaginePrimireTuristica]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="ImagineProdus" EntityType="Model.Store.ImagineProdus" store:Type="Tables" store:Schema="dbo" store:Name="ImagineProdus">
       <DefiningQuery>SELECT 
       [ImagineProdus].[ImageID] AS [ImageID], 
@@ -25,6 +31,14 @@
     <AssociationSet Name="FK_Client_Judet" Association="Model.Store.FK_Client_Judet">
       <End Role="Judet" EntitySet="Judet" />
       <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImaginePrimireTuristica_Image" Association="Model.Store.FK_ImaginePrimireTuristica_Image">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="ImaginePrimireTuristica" EntitySet="ImaginePrimireTuristica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImaginePrimireTuristica_PrimireTuristica" Association="Model.Store.FK_ImaginePrimireTuristica_PrimireTuristica">
+      <End Role="PrimireTuristica" EntitySet="PrimireTuristica" />
+      <End Role="ImaginePrimireTuristica" EntitySet="ImaginePrimireTuristica" />
     </AssociationSet>
     <AssociationSet Name="FK_ImagineProdus_Image" Association="Model.Store.FK_ImagineProdus_Image">
       <End Role="Image" EntitySet="Image" />
@@ -88,6 +102,16 @@
     <Property Name="Type" Type="varchar" Nullable="false" MaxLength="10" />
     <Property Name="Url" Type="varchar(max)" />
     <Property Name="ImageContent" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Zimbor.dbo.ImaginePrimireTuristica' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="ImaginePrimireTuristica">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="PrimireTuristicaID" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
       warning 6002: The table/view 'Zimbor.dbo.ImagineProdus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -213,6 +237,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ImaginePrimireTuristica_Image">
+    <End Role="Image" Type="Model.Store.Image" Multiplicity="1" />
+    <End Role="ImaginePrimireTuristica" Type="Model.Store.ImaginePrimireTuristica" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImaginePrimireTuristica">
+        <PropertyRef Name="ImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImaginePrimireTuristica_PrimireTuristica">
+    <End Role="PrimireTuristica" Type="Model.Store.PrimireTuristica" Multiplicity="0..1" />
+    <End Role="ImaginePrimireTuristica" Type="Model.Store.ImaginePrimireTuristica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimireTuristica">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImaginePrimireTuristica">
+        <PropertyRef Name="PrimireTuristicaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ImagineProdus_Image">
     <End Role="Image" Type="Model.Store.Image" Multiplicity="1" />
     <End Role="ImagineProdus" Type="Model.Store.ImagineProdus" Multiplicity="0..1" />
@@ -273,11 +321,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-      warning 6013: The table/view 'Zimbor.dbo.ImaginePrimireTuristica' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-      
-      <EntityType Name="ImaginePrimireTuristica">
-        <Property Name="ImageID" Type="int" />
-        <Property Name="PrimireTuristicaID" Type="int" />
-      </EntityType>-->
 </Schema>

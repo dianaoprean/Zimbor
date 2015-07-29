@@ -19,11 +19,13 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Model", "FK_ImagineProdus_Produs", "Produ", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Domain.Produ), "ImagineProdu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Domain.ImagineProdu), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_Client_Judet", "Judet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Domain.Judet), "Client", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Domain.Client), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_ImaginePrimireTuristica_Image", "Image", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Domain.Image), "ImaginePrimireTuristica", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Domain.ImaginePrimireTuristica), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_ImagineProdus_Image", "Image", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Domain.Image), "ImagineProdu", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Domain.ImagineProdu), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_ImaginePrimireTuristica_PrimireTuristica", "PrimireTuristica", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Domain.PrimireTuristica), "ImaginePrimireTuristica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Domain.ImaginePrimireTuristica), true)]
+[assembly: EdmRelationshipAttribute("Model", "FK_ImagineProdus_Produs", "Produ", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Domain.Produ), "ImagineProdu", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Domain.ImagineProdu), true)]
 [assembly: EdmRelationshipAttribute("Model", "FK_PrimireTuristica_Zona", "Zona", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Domain.Zona), "PrimireTuristica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Domain.PrimireTuristica), true)]
 [assembly: EdmRelationshipAttribute("Model", "webpages_UsersInRoles", "webpages_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Domain.webpages_Roles), "UserProfile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Domain.UserProfile))]
-[assembly: EdmRelationshipAttribute("Model", "FK_ImagineProdus_Image", "Image", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Domain.Image), "ImagineProdu", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Domain.ImagineProdu), true)]
 
 #endregion
 
@@ -78,6 +80,86 @@ namespace Domain
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<CampanieMarketing> CampanieMarketings
+        {
+            get
+            {
+                if ((_CampanieMarketings == null))
+                {
+                    _CampanieMarketings = base.CreateObjectSet<CampanieMarketing>("CampanieMarketings");
+                }
+                return _CampanieMarketings;
+            }
+        }
+        private ObjectSet<CampanieMarketing> _CampanieMarketings;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Client> Clients
+        {
+            get
+            {
+                if ((_Clients == null))
+                {
+                    _Clients = base.CreateObjectSet<Client>("Clients");
+                }
+                return _Clients;
+            }
+        }
+        private ObjectSet<Client> _Clients;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Concurenta> Concurentas
+        {
+            get
+            {
+                if ((_Concurentas == null))
+                {
+                    _Concurentas = base.CreateObjectSet<Concurenta>("Concurentas");
+                }
+                return _Concurentas;
+            }
+        }
+        private ObjectSet<Concurenta> _Concurentas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Image> Images
+        {
+            get
+            {
+                if ((_Images == null))
+                {
+                    _Images = base.CreateObjectSet<Image>("Images");
+                }
+                return _Images;
+            }
+        }
+        private ObjectSet<Image> _Images;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ImaginePrimireTuristica> ImaginePrimireTuristicas
+        {
+            get
+            {
+                if ((_ImaginePrimireTuristicas == null))
+                {
+                    _ImaginePrimireTuristicas = base.CreateObjectSet<ImaginePrimireTuristica>("ImaginePrimireTuristicas");
+                }
+                return _ImaginePrimireTuristicas;
+            }
+        }
+        private ObjectSet<ImaginePrimireTuristica> _ImaginePrimireTuristicas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ImagineProdu> ImagineProdus
         {
             get
@@ -90,6 +172,38 @@ namespace Domain
             }
         }
         private ObjectSet<ImagineProdu> _ImagineProdus;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Judet> Judets
+        {
+            get
+            {
+                if ((_Judets == null))
+                {
+                    _Judets = base.CreateObjectSet<Judet>("Judets");
+                }
+                return _Judets;
+            }
+        }
+        private ObjectSet<Judet> _Judets;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PrimireTuristica> PrimireTuristicas
+        {
+            get
+            {
+                if ((_PrimireTuristicas == null))
+                {
+                    _PrimireTuristicas = base.CreateObjectSet<PrimireTuristica>("PrimireTuristicas");
+                }
+                return _PrimireTuristicas;
+            }
+        }
+        private ObjectSet<PrimireTuristica> _PrimireTuristicas;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -110,6 +224,22 @@ namespace Domain
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<StudiuPiata> StudiuPiatas
+        {
+            get
+            {
+                if ((_StudiuPiatas == null))
+                {
+                    _StudiuPiatas = base.CreateObjectSet<StudiuPiata>("StudiuPiatas");
+                }
+                return _StudiuPiatas;
+            }
+        }
+        private ObjectSet<StudiuPiata> _StudiuPiatas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<TipProdu> TipProdus
         {
             get
@@ -126,114 +256,18 @@ namespace Domain
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<CampanieMarketing> CampanieMarketing
+        public ObjectSet<UserProfile> UserProfiles
         {
             get
             {
-                if ((_CampanieMarketing == null))
+                if ((_UserProfiles == null))
                 {
-                    _CampanieMarketing = base.CreateObjectSet<CampanieMarketing>("CampanieMarketing");
+                    _UserProfiles = base.CreateObjectSet<UserProfile>("UserProfiles");
                 }
-                return _CampanieMarketing;
+                return _UserProfiles;
             }
         }
-        private ObjectSet<CampanieMarketing> _CampanieMarketing;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Client> Client
-        {
-            get
-            {
-                if ((_Client == null))
-                {
-                    _Client = base.CreateObjectSet<Client>("Client");
-                }
-                return _Client;
-            }
-        }
-        private ObjectSet<Client> _Client;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Concurenta> Concurenta
-        {
-            get
-            {
-                if ((_Concurenta == null))
-                {
-                    _Concurenta = base.CreateObjectSet<Concurenta>("Concurenta");
-                }
-                return _Concurenta;
-            }
-        }
-        private ObjectSet<Concurenta> _Concurenta;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Judet> Judet
-        {
-            get
-            {
-                if ((_Judet == null))
-                {
-                    _Judet = base.CreateObjectSet<Judet>("Judet");
-                }
-                return _Judet;
-            }
-        }
-        private ObjectSet<Judet> _Judet;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<PrimireTuristica> PrimireTuristica
-        {
-            get
-            {
-                if ((_PrimireTuristica == null))
-                {
-                    _PrimireTuristica = base.CreateObjectSet<PrimireTuristica>("PrimireTuristica");
-                }
-                return _PrimireTuristica;
-            }
-        }
-        private ObjectSet<PrimireTuristica> _PrimireTuristica;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<StudiuPiata> StudiuPiata
-        {
-            get
-            {
-                if ((_StudiuPiata == null))
-                {
-                    _StudiuPiata = base.CreateObjectSet<StudiuPiata>("StudiuPiata");
-                }
-                return _StudiuPiata;
-            }
-        }
-        private ObjectSet<StudiuPiata> _StudiuPiata;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<UserProfile> UserProfile
-        {
-            get
-            {
-                if ((_UserProfile == null))
-                {
-                    _UserProfile = base.CreateObjectSet<UserProfile>("UserProfile");
-                }
-                return _UserProfile;
-            }
-        }
-        private ObjectSet<UserProfile> _UserProfile;
+        private ObjectSet<UserProfile> _UserProfiles;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -286,38 +320,62 @@ namespace Domain
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Zona> Zona
+        public ObjectSet<Zona> Zonas
         {
             get
             {
-                if ((_Zona == null))
+                if ((_Zonas == null))
                 {
-                    _Zona = base.CreateObjectSet<Zona>("Zona");
+                    _Zonas = base.CreateObjectSet<Zona>("Zonas");
                 }
-                return _Zona;
+                return _Zonas;
             }
         }
-        private ObjectSet<Zona> _Zona;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Image> Image
-        {
-            get
-            {
-                if ((_Image == null))
-                {
-                    _Image = base.CreateObjectSet<Image>("Image");
-                }
-                return _Image;
-            }
-        }
-        private ObjectSet<Image> _Image;
+        private ObjectSet<Zona> _Zonas;
 
         #endregion
 
         #region AddTo Methods
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CampanieMarketings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCampanieMarketings(CampanieMarketing campanieMarketing)
+        {
+            base.AddObject("CampanieMarketings", campanieMarketing);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Clients EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToClients(Client client)
+        {
+            base.AddObject("Clients", client);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Concurentas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToConcurentas(Concurenta concurenta)
+        {
+            base.AddObject("Concurentas", concurenta);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Images EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToImages(Image image)
+        {
+            base.AddObject("Images", image);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ImaginePrimireTuristicas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToImaginePrimireTuristicas(ImaginePrimireTuristica imaginePrimireTuristica)
+        {
+            base.AddObject("ImaginePrimireTuristicas", imaginePrimireTuristica);
+        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the ImagineProdus EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -325,6 +383,22 @@ namespace Domain
         public void AddToImagineProdus(ImagineProdu imagineProdu)
         {
             base.AddObject("ImagineProdus", imagineProdu);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Judets EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToJudets(Judet judet)
+        {
+            base.AddObject("Judets", judet);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PrimireTuristicas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPrimireTuristicas(PrimireTuristica primireTuristica)
+        {
+            base.AddObject("PrimireTuristicas", primireTuristica);
         }
     
         /// <summary>
@@ -336,6 +410,14 @@ namespace Domain
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the StudiuPiatas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToStudiuPiatas(StudiuPiata studiuPiata)
+        {
+            base.AddObject("StudiuPiatas", studiuPiata);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the TipProdus EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToTipProdus(TipProdu tipProdu)
@@ -344,59 +426,11 @@ namespace Domain
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the CampanieMarketing EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the UserProfiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToCampanieMarketing(CampanieMarketing campanieMarketing)
+        public void AddToUserProfiles(UserProfile userProfile)
         {
-            base.AddObject("CampanieMarketing", campanieMarketing);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Client EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToClient(Client client)
-        {
-            base.AddObject("Client", client);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Concurenta EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToConcurenta(Concurenta concurenta)
-        {
-            base.AddObject("Concurenta", concurenta);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Judet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToJudet(Judet judet)
-        {
-            base.AddObject("Judet", judet);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the PrimireTuristica EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToPrimireTuristica(PrimireTuristica primireTuristica)
-        {
-            base.AddObject("PrimireTuristica", primireTuristica);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the StudiuPiata EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToStudiuPiata(StudiuPiata studiuPiata)
-        {
-            base.AddObject("StudiuPiata", studiuPiata);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the UserProfile EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUserProfile(UserProfile userProfile)
-        {
-            base.AddObject("UserProfile", userProfile);
+            base.AddObject("UserProfiles", userProfile);
         }
     
         /// <summary>
@@ -424,19 +458,11 @@ namespace Domain
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Zona EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Zonas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToZona(Zona zona)
+        public void AddToZonas(Zona zona)
         {
-            base.AddObject("Zona", zona);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Image EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToImage(Image image)
-        {
-            base.AddObject("Image", image);
+            base.AddObject("Zonas", zona);
         }
 
         #endregion
@@ -1005,8 +1031,7 @@ namespace Domain
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="type">Initial value of the Type property.</param>
         /// <param name="imageContent">Initial value of the ImageContent property.</param>
-        /// <param name="imageContent1">Initial value of the ImageContent1 property.</param>
-        public static Image CreateImage(global::System.Int32 id, global::System.String path, global::System.String name, global::System.String type, global::System.Byte[] imageContent, global::System.Byte[] imageContent1)
+        public static Image CreateImage(global::System.Int32 id, global::System.String path, global::System.String name, global::System.String type, global::System.Byte[] imageContent)
         {
             Image image = new Image();
             image.ID = id;
@@ -1014,7 +1039,6 @@ namespace Domain
             image.Name = name;
             image.Type = type;
             image.ImageContent = imageContent;
-            image.ImageContent1 = imageContent1;
             return image;
         }
 
@@ -1168,30 +1192,6 @@ namespace Domain
         private global::System.Byte[] _ImageContent;
         partial void OnImageContentChanging(global::System.Byte[] value);
         partial void OnImageContentChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Byte[] ImageContent1
-        {
-            get
-            {
-                return StructuralObject.GetValidValue(_ImageContent1);
-            }
-            set
-            {
-                OnImageContent1Changing(value);
-                ReportPropertyChanging("ImageContent1");
-                _ImageContent1 = StructuralObject.SetValidValue(value, false, "ImageContent1");
-                ReportPropertyChanged("ImageContent1");
-                OnImageContent1Changed();
-            }
-        }
-        private global::System.Byte[] _ImageContent1;
-        partial void OnImageContent1Changing(global::System.Byte[] value);
-        partial void OnImageContent1Changed();
 
         #endregion
 
@@ -1203,8 +1203,46 @@ namespace Domain
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImaginePrimireTuristica_Image", "ImaginePrimireTuristica")]
+        public ImaginePrimireTuristica ImaginePrimireTuristica
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImaginePrimireTuristica>("Model.FK_ImaginePrimireTuristica_Image", "ImaginePrimireTuristica").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImaginePrimireTuristica>("Model.FK_ImaginePrimireTuristica_Image", "ImaginePrimireTuristica").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ImaginePrimireTuristica> ImaginePrimireTuristicaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ImaginePrimireTuristica>("Model.FK_ImaginePrimireTuristica_Image", "ImaginePrimireTuristica");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ImaginePrimireTuristica>("Model.FK_ImaginePrimireTuristica_Image", "ImaginePrimireTuristica", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImagineProdus_Image", "ImagineProdu")]
-        public ImagineProdu ImagineProdus
+        public ImagineProdu ImagineProdu
         {
             get
             {
@@ -1220,7 +1258,7 @@ namespace Domain
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<ImagineProdu> ImagineProdusReference
+        public EntityReference<ImagineProdu> ImagineProduReference
         {
             get
             {
@@ -1231,6 +1269,166 @@ namespace Domain
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ImagineProdu>("Model.FK_ImagineProdus_Image", "ImagineProdu", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="ImaginePrimireTuristica")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ImaginePrimireTuristica : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ImaginePrimireTuristica object.
+        /// </summary>
+        /// <param name="imageID">Initial value of the ImageID property.</param>
+        public static ImaginePrimireTuristica CreateImaginePrimireTuristica(global::System.Int32 imageID)
+        {
+            ImaginePrimireTuristica imaginePrimireTuristica = new ImaginePrimireTuristica();
+            imaginePrimireTuristica.ImageID = imageID;
+            return imaginePrimireTuristica;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ImageID
+        {
+            get
+            {
+                return _ImageID;
+            }
+            set
+            {
+                if (_ImageID != value)
+                {
+                    OnImageIDChanging(value);
+                    ReportPropertyChanging("ImageID");
+                    _ImageID = StructuralObject.SetValidValue(value, "ImageID");
+                    ReportPropertyChanged("ImageID");
+                    OnImageIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ImageID;
+        partial void OnImageIDChanging(global::System.Int32 value);
+        partial void OnImageIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PrimireTuristicaID
+        {
+            get
+            {
+                return _PrimireTuristicaID;
+            }
+            set
+            {
+                OnPrimireTuristicaIDChanging(value);
+                ReportPropertyChanging("PrimireTuristicaID");
+                _PrimireTuristicaID = StructuralObject.SetValidValue(value, "PrimireTuristicaID");
+                ReportPropertyChanged("PrimireTuristicaID");
+                OnPrimireTuristicaIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PrimireTuristicaID;
+        partial void OnPrimireTuristicaIDChanging(Nullable<global::System.Int32> value);
+        partial void OnPrimireTuristicaIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImaginePrimireTuristica_Image", "Image")]
+        public Image Image
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Image>("Model.FK_ImaginePrimireTuristica_Image", "Image").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Image>("Model.FK_ImaginePrimireTuristica_Image", "Image").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Image> ImageReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Image>("Model.FK_ImaginePrimireTuristica_Image", "Image");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Image>("Model.FK_ImaginePrimireTuristica_Image", "Image", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImaginePrimireTuristica_PrimireTuristica", "PrimireTuristica")]
+        public PrimireTuristica PrimireTuristica
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrimireTuristica>("Model.FK_ImaginePrimireTuristica_PrimireTuristica", "PrimireTuristica").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrimireTuristica>("Model.FK_ImaginePrimireTuristica_PrimireTuristica", "PrimireTuristica").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PrimireTuristica> PrimireTuristicaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrimireTuristica>("Model.FK_ImaginePrimireTuristica_PrimireTuristica", "PrimireTuristica");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PrimireTuristica>("Model.FK_ImaginePrimireTuristica_PrimireTuristica", "PrimireTuristica", value);
                 }
             }
         }
@@ -1325,44 +1523,6 @@ namespace Domain
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImagineProdus_Produs", "Produ")]
-        public Produ Produ
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Produ> ProduReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImagineProdus_Image", "Image")]
         public Image Image
         {
@@ -1391,6 +1551,44 @@ namespace Domain
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Image>("Model.FK_ImagineProdus_Image", "Image", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImagineProdus_Produs", "Produ")]
+        public Produ Produ
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Produ> ProduReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Produ>("Model.FK_ImagineProdus_Produs", "Produ", value);
                 }
             }
         }
@@ -1514,7 +1712,7 @@ namespace Domain
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Model", "FK_Client_Judet", "Client")]
-        public EntityCollection<Client> Client
+        public EntityCollection<Client> Clients
         {
             get
             {
@@ -1764,6 +1962,28 @@ namespace Domain
         #endregion
 
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "FK_ImaginePrimireTuristica_PrimireTuristica", "ImaginePrimireTuristica")]
+        public EntityCollection<ImaginePrimireTuristica> ImaginePrimireTuristicas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ImaginePrimireTuristica>("Model.FK_ImaginePrimireTuristica_PrimireTuristica", "ImaginePrimireTuristica");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ImaginePrimireTuristica>("Model.FK_ImaginePrimireTuristica_PrimireTuristica", "ImaginePrimireTuristica", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2815,7 +3035,7 @@ namespace Domain
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Model", "webpages_UsersInRoles", "UserProfile")]
-        public EntityCollection<UserProfile> UserProfile
+        public EntityCollection<UserProfile> UserProfiles
         {
             get
             {
@@ -2947,7 +3167,7 @@ namespace Domain
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Model", "FK_PrimireTuristica_Zona", "PrimireTuristica")]
-        public EntityCollection<PrimireTuristica> PrimireTuristica
+        public EntityCollection<PrimireTuristica> PrimireTuristicas
         {
             get
             {
